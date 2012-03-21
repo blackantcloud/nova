@@ -18,3 +18,6 @@ tools/conf/nova.conf*
 cover/*
 dist/*
 .coverage
+po/*.pot
+.idea
+projectFilesBackup
