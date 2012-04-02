@@ -41,10 +41,10 @@ ebtables-up()
 arptables-up()
 {
         $ARPTABLES -P FORWARD DROP
-        $ARPTABLES -A FORWARD --opcode Request --in-interface eth0 -j ACCEPT
-        $ARPTABLES -A FORWARD --opcode Reply --in-interface eth0 -j ACCEPT
-        $ARPTABLES -A FORWARD --opcode Request --in-interface eth1 -j ACCEPT
-        $ARPTABLES -A FORWARD --opcode Reply --in-interface eth1 -j ACCEPT
+        $ARPTABLES -A FORWARD --arpop Request --in-interface eth0 -j ACCEPT
+        $ARPTABLES -A FORWARD --arpop Reply --in-interface eth0 -j ACCEPT
+        $ARPTABLES -A FORWARD --arpop Request --in-interface eth1 -j ACCEPT
+        $ARPTABLES -A FORWARD --arpop Reply --in-interface eth1 -j ACCEPT
 }
 
 iptables-down()
@@ -64,10 +64,10 @@ ebtables-down()
 arptables-down()
 {
         $ARPTABLES -P FORWARD ACCEPT
-        $ARPTABLES -D FORWARD --opcode Request --in-interface eth0 -j ACCEPT
-        $ARPTABLES -D FORWARD --opcode Reply --in-interface eth0 -j ACCEPT
-        $ARPTABLES -D FORWARD --opcode Request --in-interface eth1 -j ACCEPT
-        $ARPTABLES -D FORWARD --opcode Reply --in-interface eth1 -j ACCEPT
+        $ARPTABLES -D FORWARD --arpop Request --in-interface eth0 -j ACCEPT
+        $ARPTABLES -D FORWARD --arpop Reply --in-interface eth0 -j ACCEPT
+        $ARPTABLES -D FORWARD --arpop Request --in-interface eth1 -j ACCEPT
+        $ARPTABLES -D FORWARD --arpop Reply --in-interface eth1 -j ACCEPT
 }
 
 start()
