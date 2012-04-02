@@ -1636,6 +1636,9 @@ def _resize_part_and_fs(dev, start, old_sectors, new_sectors):
 
     # Add back journal
     utils.execute('tune2fs', '-j', partition_path, run_as_root=True)
+    # Adding a sleep here to prevent a race condition
+    time.sleep(30)
+    LOG.debug("Completed Resizing and tuning the filesystem")
 
 
 def _sparse_copy(src_path, dst_path, virtual_size, block_size=4096):
