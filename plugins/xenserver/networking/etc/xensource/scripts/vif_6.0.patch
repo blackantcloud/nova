@@ -1,0 +1,18 @@
+--- vif.orig	2012-03-28 21:16:05.893234608 -0500
++++ vif	2012-03-28 21:15:44.809234062 -0500
+@@ -242,6 +242,7 @@
+ 
+         # xs-xen.pq.hq:91e986b8e49f netback-wait-for-hotplug
+         xenstore-write "/local/domain/0/backend/vif/${DOMID}/${DEVID}/hotplug-status" "connected"
++        python /etc/xensource/scripts/vif_rules.py ${DOMID} online 2>&1 > /dev/null
+         call_hook_script $DOMID "${ACTION}"
+     fi
+     ;;
+@@ -254,6 +255,7 @@
+ 
+ remove)
+     if [ "${TYPE}" = "vif" ] ;then
++        python /etc/xensource/scripts/vif_rules.py ${DOMID} offline 2>&1 > /dev/null
+         xenstore-rm "${HOTPLUG}/hotplug"
+         call_hook_script $DOMID "${ACTION}"
+     fi
